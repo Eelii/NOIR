@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+ <head>
+   <meta charset="UTF-8">
+
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+   <!-- jQuery library -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+   <!-- Popper JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+   <!-- Latest compiled JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="css/mobile.css">
+
+
+   <title>NOIR - huonevaraus</title>
+   <link rel="shortcut icon" href="img/favicon.ico"/>
+
+   <style>
+     
+     @font-face {
+      font-family: Megrim;
+      src: url("fonts/Megrim-Regular.ttf")  format('truetype');
+    }
+
+    body{
+      background-color: black;
+    }
+
+    label{
+      color: #8f05a1;
+    }
+
+    img{
+      width: 350px;
+      height: 200px;
+      z-index: 5;
+    }
+
+    .brand-letter{
+      font-family: 'Monoton', cursive;
+      font-size: 100px;
+    } 
+
+    .nav-link{
+      color: #8f05a1;
+    }
+
+    p#n.brand-letter{
+      color:rgb(103, 231, 44)!important;
+      animation: flicker-letter 200s infinite alternate;
+    }
+
+    p#o.brand-letter{
+      color:rgb(77, 230, 6)!important;
+      animation: flicker-letter 25s infinite alternate;
+      margin-left: 20px;
+    }
+
+
+    p#i.brand-letter{
+      color:rgb(78, 199, 22)!important;
+      animation: flicker-letter 60s infinite alternate;
+      margin-left: 20px;
+    }
+
+    p#r.brand-letter{
+      color:rgb(77, 230, 6)!important;
+      animation: flicker-letter 100s infinite alternate;
+      margin-left: 20px;
+    }
+
+    @keyframes flicker-letter{
+    
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    
+          text-shadow:
+          0 0 4px #fff,
+          0 0 11px #fff,
+          0 0 19px #fff,
+          0 0 40px #0fa,
+          0 0 80px #0fa,
+          0 0 90px #0fa,
+          0 0 100px #0fa,
+          0 0 150px #0fa;
+      }
+    
+      20%, 24%, 55% {        
+          text-shadow: none;
+      }    
+    }
+
+
+    .arrow {
+      height: 130px;
+      position: absolute;
+      left: 200px;
+      top: 440px;
+      transform: translateX(-50%) translateY(-50%) scaleX(-1);
+      cursor: pointer;
+      width: 300px;
+    }
+
+    .arrow-top, .arrow-bottom {
+      background-color: rgb(90, 89, 89);
+      height: 4px;
+      left: -5px;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+    }
+
+    .arrow-top:after, .arrow-bottom:after {
+      background-color: #e60073;
+      content: "";
+      height: 100%;
+      position: absolute;
+      top: 0;
+      transition: all 0.15s;
+    }
+
+    .arrow-top {
+      transform: rotate(45deg);
+      transform-origin: bottom right;
+    }
+
+    .arrow-top:after {
+      left: 100%;
+      right: 0;
+      transition-delay: 0s;
+    }
+
+    .arrow-bottom {
+      transform: rotate(-45deg);
+      transform-origin: top right;
+    }
+
+    .arrow-bottom:after {
+      left: 0;
+      right: 100%;
+      transition-delay: 0.15s;
+    }
+
+    .arrow:hover .arrow-top:after {
+      left: 0;
+      transition-delay: 0.15s;
+    }
+
+    .arrow:hover .arrow-bottom:after {
+      right: 0;
+      transition-delay: 0s;
+    }
+
+    #back{
+      position:absolute;
+      color: #e60073;
+      top: 375px;
+      left: 170px;
+      border-radius: 200px;
+      font-size: 40px;
+      padding: 30px;
+      border: solid;
+      border-color: white;
+      background-color: black;
+      animation: glow 20s ease-in-out infinite alternate;
+      font-family: 'Megrim', cursive;
+ 
+    }
+
+    #back:hover{
+      text-decoration: none;
+      border: solid;
+      border-color: #ffffffe8;
+      color: #cf0269;
+    }
+
+    #confirmationBtn{
+      position: relative;
+      top: 65%;
+      transition: visibility 3s ease-in 4s;
+      border: solid;
+      padding: 10px;
+      color: #06cc06;
+      box-shadow: 0 0 10px #06cc06;
+
+    }
+
+    #confirmationMsg{
+      position: relative;
+      transition: visibility 3s ease 2.5s;
+      top: 30px;
+    }
+
+    #formConfirmation{
+      visibility: hidden;
+      position: absolute;
+      top: 300px;
+      left: 30vw;
+      height: 1px;
+      width: 1px;
+      border: solid;
+      border-radius: 10px;
+      color: white;
+      background-color: black;
+      transition: width 1s, height 1.2s ease 1.2s;
+      text-align: center;
+    } 
+
+    .showConfirmation{
+      visibility: visible!important;
+      height: 300px!important;
+      width: 600px!important;
+      opacity: 90%;
+      z-index: 9001;
+    }   
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+      }
+    
+      to {
+        box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+      }
+    }
+
+    #submitBtn{
+      color: #fff;
+      cursor: pointer;
+      padding: 15px;
+      background: #17e038;
+      background: -webkit-linear-gradient(to right, #12e212b6, rgb(103, 231, 44));
+      background: -webkit-gradient(linear, left top, right top, from(#08ce22a9), to(rgb(103, 231, 44)));
+      background: -webkit-linear-gradient(left, #19d412b9, rgb(103, 231, 44));
+      background: -o-linear-gradient(left, #20d10fb2, rgb(103, 231, 44));
+      background: linear-gradient(to right, #12ee24a2, rgb(103, 231, 44));
+      border-radius: 5px;
+      -webkit-transition: 200ms ease-out;
+      -o-transition: 200ms ease-out;
+      transition: 200ms ease-out;
+      -webkit-box-shadow: 0 0 90px #10ee10;
+      box-shadow: 0 0 90px #31d810;
+      margin-bottom: 100px;
+      margin-top: 20px;
+      
+    }
+
+    #submitBtn:hover {
+     -webkit-box-shadow: 0 0 10px #24eb0a;
+     box-shadow: 0 0 10px #06cc06;
+    }
+
+    #form{
+      position: absolute;
+      margin: auto;
+      top: -250px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 360px;
+      height: 150px;
+    }
+
+    #logo{
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      position: absolute;
+      margin: auto;
+      top: -600px;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 360px;
+      height: 150px;
+    }
+
+    #room-tabs{
+      width: 380px;
+      position: relative;
+      float: right;
+      margin-right: 100px;
+      top: 300px;
+      
+    }
+
+    .navbar-light .navbar-nav .active>.nav-link{
+      color:red!important;
+    }
+
+
+    @media only screen and (max-width: 1324px) {
+
+        .arrow{
+          visibility: hidden;
+        }
+
+        #back{
+          top: 1000px;
+          margin-bottom: 500px;
+        }
+
+        #logo{
+          position: relative;
+          top: 50px;
+          left: -200px;
+        }
+
+        #form{
+          position:relative;
+          top: 90px;
+          left: -200px;
+        }
+
+        #room-tabs{
+          position:relative;
+          top: 70px;
+          margin-right: 50px;
+        }
+
+        #formConfirmation{
+          left: 20vw!important;
+        }
+      
+      }
+
+      @media only screen and (max-width: 837px) {
+
+        #back{
+          top: 1300px;
+          left: 30vw;
+        }
+
+        #logo{
+          position: relative;
+          top: 50px;
+          left: -100px;
+        }
+
+        #form{
+          position:relative;
+          left: -100px;
+        }
+
+        #formConfirmation{
+          left: 10vw!important;
+        }
+
+        #room-tabs{
+          position:relative;
+          top: 630px;
+          left: 8vw!important;
+          margin-right: 0!important;
+          float: none!important;
+          margin-top: 60px;
+        }
+  
+      }
+
+      @media only screen and (max-width: 690px) {
+        #formConfirmation{
+          left: 5vw!important;
+          width: 90vw!important;  
+          height: 450px!important;
+        }
+      }
+
+      @media only screen and (max-width: 569px) {
+
+        #form{
+          left: 4vw!important;
+          width: 85vw!important;
+        }
+
+        #logo{
+          left: 4vw!important;
+        }
+
+        #back{
+          left: 12vw!important;
+        }
+      }
+
+    </style>
+
+ </head>
+ 
+ <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+  <div id="logo">
+    <p class="brand-letter" id="n">N</p><p class="brand-letter" id="o">O</p><p class="brand-letter" id="i">I</p><p class="brand-letter" id="r">R</p>
+  </div>
+
+  <div class="arrow" onclick="toMain()">
+    <div class="arrow-top"></div>
+    <div class="arrow-bottom"></div>
+  </div>
+
+  <a id="back" href="main.html">TAKAISIN</a>
+
+  <form id="form">
+
+    <div class="form-group">
+      <label for="fname">Etunimi</label>
+      <input type="text" class="form-control" id="fname" aria-describedby="Etunimi" placeholder="Etunimi" required>
+    </div>
+
+    <div class="form-group">
+      <label for="fname">Sukunimi</label>
+      <input type="text" class="form-control" id="lname" aria-describedby="Sukunimi" placeholder="Sukunimi" required>
+    </div>
+
+    <div class="form-group">
+    <label for="email">Sähköpostiosoite:</label><br>
+    <input type="email" id="email" name="email" required><br>
+    </div>
+
+    <div class="form-group">
+      <label for="roomnum">Huoneen numero</label>
+      <select class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="date">Päivämäärä:</label><br>
+      <input type="date" id="date" name="date" required><br>
+    </div>
+
+    <div class="form-group">
+      <label for="extra">Huomioitavaa:</label>
+      <textarea class="form-control" id="extra" rows="3"></textarea>
+      <small id="emailHelp" class="form-text text-muted">Valinnainen</small>
+    </div>
+    
+    <button type="submit" id="submitBtn" class="btn btn-primary">Varaa huone</button>
+
+  </form>
+  
+  <div id="formConfirmation">
+    <p id="confirmationMsg">Kiitos varauksestasi! Varausvarmistus on lähetetty sähköpostiisi.</p>
+    <a id="confirmationBtn" href="main.html">Takaisin etusivulle</a>
+  </div>
+
+  <div id="room-tabs">
+
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a id="room1href" class="nav-link active" data-toggle="tab" href="#room1">Huone 1</a>
+      </li>
+      <li class="nav-item">
+        <a id="room2href" class="nav-link" data-toggle="tab" href="#room2">Huone 2</a>
+      </li>
+      <li class="nav-item">
+        <a id="room3href" class="nav-link" data-toggle="tab" href="#room3">Huone 3</a>
+      </li>
+      <li class="nav-item">
+        <a id="room4href" class="nav-link" data-toggle="tab" href="#room4">Huone 4</a>
+      </li>
+    </ul>
+
+    <div class="tab-content">
+
+      <div class="container tab-pane active" id="room1"> 
+          <img src="img/tab-room.jpg"/>
+          <p></p>
+      </div>
+
+      <div class="container tab-pane fade" id="room2">
+          <img src="img/tab-room2.jpg"/>
+      </div>
+
+      <div class="container tab-pane fade" id="room3">
+        <img src="img/tab-room3.png"/>
+      </div>
+
+      <div class="container tab-pane fade" id="room4">
+        <img src="img/tab-room4.jpg"/>
+      </div>
+
+    </div>
+
+  </div>
+  
+ </body>
+ 
+ <script>
+
+    function toMain(){
+      window.location.href = "main.html";
+    }
+
+    function getFormValues(){
+      fname = $("#fname").val();
+      lname = $("#lname").val();
+      email = $("#email").val();
+      date = $("#date").val();
+      var values = {"fname":fname, "lname":lname, "email":email, "date":date };
+      return values
+    }
+
+    function showConfirmation(){
+      $("#formConfirmation").addClass("showConfirmation");
+      var formValues = getFormValues();
+      fname = formValues["fname"];
+      lname = formValues["lname"];
+      email = formValues["email"];
+      date = formValues["date"];
+      var msg;
+
+      if(fname && !lname && !email){
+        msg = "Kiitos varauksestasi " + fname + "! Varausvahvistus on lähtetty sähköpostiisi.";
+      }
+
+      else if(fname && lname && !email){
+        msg = "Kiitos varauksestasi " + fname + " " + lname + "! Varausvahvistus on lähtetty sähköpostiisi.";
+      }
+
+      else if (fname && lname && email){
+        msg = "Kiitos varauksestasi " + fname + " " + lname + "! Varausvahvistus on lähtetty osoitteeseen " + email + ".";
+      }
+
+      $("#confirmationMsg").html(msg);
+    }
+    
+
+    function clearForm(){
+      $(':input','#form')
+        .not(':button, :submit, :reset, :hidden')
+        .val('')
+        .prop('checked', false)
+        .prop('selected', false);
+    }
+
+
+
+    $(document).ready(function(){
+
+      $( "#form").submit(function( event ) {
+        event.preventDefault();
+        showConfirmation()
+      });
+    });
+
+
+
+   $("a[data-toggle='tab']").on("shown.bs.tab", function (e) {
+    var tabId = $(e.target).attr("href"); 
+    switch(tabId){
+      case "#room1":
+        $("select").val("1");
+        break;
+      case "#room2":
+        $("select").val("2");
+        break;
+      case "#room3":
+        $("select").val("3");
+        break;
+      case "#room4":
+        $("select").val("4");
+    }
+  });
+
+  $("select").on("change", function(e){
+    $(".nav-item.active").removeClass("active");
+    $(".nav-link.active").removeClass("active");
+    $(".tab-pane.active").removeClass("active");
+    
+    switch(this.value){
+      case "1":
+      $("#room1href").addClass("active");
+      $("#room1").addClass("active");
+      $("#room1").removeClass("fade");
+      break;
+
+      case "2":
+      $("#room2href").addClass("active");
+      $("#room2").addClass("active");
+      $("#room2").removeClass("fade");
+      break;
+
+      case "3":
+      $("#room3href").addClass("active");
+      $("#room3").addClass("active");
+      $("#room3").removeClass("fade");
+      break;
+
+      case "4":
+      $("#room4href").addClass("active");
+      $("#room4").addClass("active");
+      $("#room4").removeClass("fade");
+    }
+
+   
+  console.log(e.value,this.value,
+              this.options[this.selectedIndex].value,
+              $(this).find("option:selected").val(),);
+  });
+
+  $("#back").hover(
+      function() {
+        $("#arrow-top").addClass("arrow-top:after");
+  }
+    );
+ </script>
+</html> 

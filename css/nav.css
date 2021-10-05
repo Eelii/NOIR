@@ -1,0 +1,106 @@
+  p#n.brand-letter{
+    color:rgb(103, 231, 44)!important;
+    animation: flicker-letter 200s infinite alternate;
+  }
+
+  p#o.brand-letter{
+    color:rgb(77, 230, 6)!important;
+    animation: flicker-letter 25s infinite alternate;
+  }
+
+
+  p#i.brand-letter{
+    color:rgb(78, 199, 22)!important;
+    animation: flicker-letter 60s infinite alternate;
+  }
+
+  p#r.brand-letter{
+    color:rgb(77, 230, 6)!important;
+    animation: flicker-letter 100s infinite alternate;
+  }
+
+  @keyframes flicker-letter{
+  
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+  
+        text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #0fa,
+        0 0 80px #0fa,
+        0 0 90px #0fa,
+        0 0 100px #0fa,
+        0 0 150px #0fa;
+    
+    }
+  
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }    
+  }
+
+  .navbar{
+    background-color: black;
+    border-bottom: 2px solid rgb(224, 221, 25);
+    border-radius: 7px;
+    outline: none;
+    border-color: #1fdd06e8;
+    box-shadow: 0 0 10px #04ee18;
+  }
+
+
+  .nav-link.active{
+    text-shadow: 2px 2px 5px yellow!important;
+    color: red;
+
+  }
+
+  .nav-link{
+    font-family: 'Megrim', cursive;
+    color: white!important;
+    font-size: 40px;
+    margin-left: 50px;
+  }
+
+  .nav-link:hover{
+    text-shadow: 2px 2px 5px yellow;
+  }
+
+  .navbar-brand{
+    font-family: 'Monoton', cursive;
+    color: white !important;
+    font-size: 40px;
+  }
+
+  @keyframes flashAnim {
+    0% { background: transparent; }
+    55% { background: rgba(254, 255, 202, 0.27); }
+    60% { background: transparent; }
+    75% { background: rgba(254, 255, 202, 0.27); }
+    80% { background: transparent; }
+    95% { background: rgba(254, 255, 202, 0.27); }
+    100% { background: transparent; }
+}
+
+@-moz-keyframes flashAnim {
+    0% { background: transparent; }
+    55% { background: rgba(254, 255, 202, 0.27); }
+    60% { background: transparent; }
+    75% { background: rgba(254, 255, 202, 0.27); }
+    80% { background: transparent; }
+    95% { background: rgba(254, 255, 202, 0.27); }
+    100% { background: transparent; }
+}
+
+@-webkit-keyframes flashAnim {
+      0% { background: transparent; }
+    55% { background: rgba(254, 255, 202, 0.27); }
+    60% { background: transparent; }
+    75% { background: rgba(254, 255, 202, 0.27); }
+    80% { background: transparent; }
+    95% { background: rgba(254, 255, 202, 0.27); }
+    100% { background: transparent; }
+}
+
+

@@ -1,0 +1,165 @@
+
+@media only screen and (max-width: 1500px) {
+
+
+
+     #anchor-chatbox{
+      top: 2500px!important;
+      visibility: hidden;
+
+     }
+
+  
+     div #chatbox-right.row{
+        display: block!important;
+     }
+    
+
+     #reservationBtn{
+       left: 35vw;
+     }
+     
+   
+
+
+  }
+
+  @media only screen and (max-width: 990px){
+    #reservationBtn{
+      left: 23vw!important;
+    }
+    
+  }
+
+  @media only screen and (max-width: 650px){
+    .neon-vacancy{
+      position:relative;
+      text-align: left!important;
+      left:-90px;
+    }
+  }
+
+  @media only screen and (max-width: 1325px) and (min-width: 990px) {
+    .navbar-brand{
+      visibility:collapse;
+    }
+  }
+
+  @media only screen and (max-width: 1313px) {
+  
+    #chatbox{
+      visibility: hidden;
+    }
+
+    #chatrow{
+      visibility: hidden;
+      width: 500px;
+   }
+
+    /*messages*/
+    #chatbox-right{
+      position: relative;  
+      display: block;   
+      top: -300px;
+      height: 400px;
+      left: 2px;
+      visibility: visible;
+      background-color: red;
+      color: red;
+     }
+     
+     /*form*/
+     #chatbox-left{
+      position: relative;     
+      top:300px;
+      float: left;
+      left: 20px;
+      background-color: blueviolet;
+      color: blueviolet;
+     }
+  }
+
+  @media only screen and (max-width: 660px) {
+    #location-map,#location-map-iframe{
+      width: 70vw;
+    }
+  }
+  
+  @media only screen and (max-width: 514px) {
+    #chatbox-right{
+      position:relative;
+      left: -100px;
+      top: -100px;
+    }
+  }
+
+  @media only screen and (min-width: 969px) {
+
+  
+    #chatbox{
+      position:relative;
+      float: left;
+      width: 500px;
+    }
+
+  
+  }
+
+  @media only screen and (max-width: 700px){
+    #preamble{font-size: 22px!important;}
+  }
+
+  @media only screen and (max-width: 620px) {
+
+    
+    #anchor-introduction{
+      top: 920px!important;
+    }
+
+    #anchor-location{
+      top: 1650px;
+    }
+
+    #anchor-chatbox{
+     top: 2500px!important;
+     visibility: hidden;
+
+    }
+
+  }
+
+  @media only screen and (max-width: 560px) {
+
+    #anchor-introduction{
+      top: 920px!important;
+    }
+
+    #anchor-location{
+      top: 2350px!important;
+    }
+
+    #anchor-chatbox{
+     top: 4000px!important;
+
+    }
+
+  }
+
+  @media only screen and (max-width: 560px) {
+
+   #chatbox-right{
+     left: -100px!important;
+     top: -100px;
+     width:80%;
+   }
+   #chatrow{
+     width:100%;
+   }
+
+  }
+
+
+
+
+
+  

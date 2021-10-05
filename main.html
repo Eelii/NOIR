@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+ <head>
+    <meta charset="UTF-8">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-database.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.7.1/firebase-analytics.js"></script>
+
+    <script src="js/rain.js"></script>
+    
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet"> 
+    <style>
+    @font-face {
+      font-family: Megrim;
+      src: url("fonts/Megrim-Regular.ttf")  format('truetype');
+    }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap" rel="stylesheet"> 
+
+    <script src="js/clock.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/firebaseConfig.js"></script>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/rain.css">
+
+
+    <title>NOIR</title>
+    <link rel="shortcut icon" href="img/favicon.ico"/>
+
+    <style>
+
+    html,body
+    {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+    }
+
+    .anchor{
+      visibility: collapse;
+      position: absolute;
+    }
+
+    .chatbox-right-message{
+      color: #fff;
+      animation: chat-glow 3s ease-in-out infinite alternate;
+    }
+
+    .chatbox-right-sender{
+      color: #fff;
+    }
+
+    @keyframes chat-glow {
+      from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+      }
+    
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+      }
+    }
+    .chatbox-right-time{
+      color: gray;
+    }
+    
+    .neon-vacancy {
+      padding: 6rem;
+      text-align: center;
+      color: rgba(255,200,200,0.8);
+      font-family: Neon80s, sans-serif;
+      font-size: 11vw;
+      letter-spacing: 2rem;
+      animation: neonspark 1s 3s forwards;
+    }
+
+    .neonText {
+      color: #fff;
+      text-shadow:
+        0 0 7px #fff,
+        0 0 10px #fff,
+        0 0 21px #fff,
+        0 0 42px #0fa,
+        0 0 82px #0fa,
+        0 0 92px #0fa,
+        0 0 102px #0fa,
+        0 0 151px #0fa;
+    }
+
+    .jumbotron{
+      background-color: black;
+      color:white;
+    }
+
+    .jumbotron_pic {
+      width: 100%;
+      max-width: 500px;
+      max-height: 300px;
+      border-radius: 50%;
+    }
+
+    .left{
+      border-top: solid;
+      border-bottom: solid;
+      position:relative;
+      width:100%;
+      background-color:black;
+      color: white;
+      height: 300px;
+      text-align: center;
+      animation: left-glow 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes left-glow {
+      from {
+        box-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+      }
+    
+      to {
+        box-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+      }
+    }
+
+    .chatbox-right-time{
+      color: gray;
+    }
+
+    .left-background{
+      height: 100%;
+      width: 100%;
+      position: relative;
+      background-image: url("img/window-rain.png");
+      filter: blur(3px);
+    }
+    
+
+    .right{
+      border: solid;
+      position:relative;
+      background-image: url('img/wall2.png');
+      height: 300px;
+      float: right;
+      justify-content: center;
+      margin-right: 2px;
+      width: 50%;
+      max-height: 300px;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      justify-content: center;
+    }
+
+    .row {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      
+    }
+
+    .row2 {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+    }
+
+    .clock{
+      background-color:rgba(92, 6, 6, 0.301);
+      position: relative;
+      font-size: 27px;
+      font-family: 'Bungee Inline', cursive;
+      border-radius: 8px; 
+      animation: clockFlicker 0.11s ease-in-out infinite alternate; 
+    }
+
+    .clock *{
+      margin-left: 50px;
+      color: blue;
+    }
+
+    @keyframes clockFlicker {
+    100% {
+      text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #f09,
+        0 0 80px #f09,
+        0 0 90px #f09,
+        0 0 100px #f09,
+        0 0 150px #f09;
+    }
+    0% {
+        text-shadow:
+          0 0 4px #fff,
+          0 0 10px #fff,
+          0 0 18px #fff,
+          0 0 38px #f09,
+          0 0 73px #f09,
+          0 0 80px #f09,
+          0 0 94px #f09,
+          0 0 140px #f09;
+      }
+    }
+
+    #anchor-vacancy{
+      top: 0px;
+      height: 1000px;
+    }
+
+    #anchor-introduction{
+      top: 1000px;
+      height: 400px;
+    }
+
+    #anchor-location{
+      top: 1600px;
+      height: 400px;
+    }
+
+    #anchor-chatbox{
+      top: 2200px;
+      height: 300px;
+    }
+
+    #chatrow{
+      visibility: visible;
+    }
+    #chatbox{
+      height: 500px;
+      width: 100vw;
+      background-color: black;
+      margin-top: 150px;
+      border: 2px solid;
+      border-radius: 7px;
+      outline: none;
+      border-color: #1fdd06e8;
+      box-shadow: 0 0 10px #04ee18;
+      margin-bottom: 50px;
+    }
+
+    /*form*/
+    #chatbox-left{
+      height: 100px;
+      width: 20vw;
+      margin-top: 120px;
+      margin-left: 50px;
+      color: white;
+      background-color: black;
+    }
+
+    /*messages*/
+    #chatbox-right{
+      margin-top: 30px;
+      max-width: 65vw;
+      height: 430px;
+      left: 80px;
+      right: 80px;
+      overflow-y: scroll;
+      background-color: black;
+      border: solid;
+      border-color: gray;
+      border-radius: 1px;
+      box-shadow: 0px 0px 0px 8px rgba(63, 66, 63, 0.822);
+
+    }
+
+    #name{
+      background-color: gray;
+      color: white;
+      border-radius: 10px;
+    }
+
+    #message{
+      background-color: gray;
+      color: white;
+      border-radius: 10px;
+      height: 150px;
+      max-height: 240px;
+      animation: chat-glow 10s ease-in-out infinite;
+
+    }
+
+    #msgBtn{
+      margin-top: 30px;
+      margin-left: 10px;
+      background-color: black;
+      color:rgba(61, 255, 22, 0.6);
+      border:solid;
+      border-color: #04ee18;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    #msgBtn:hover{
+      color: white;
+    }
+
+    #introduction{
+      background-color: black;
+      margin-top: 250px;
+    }
+
+    #location{
+
+    }
+    
+    #location-map{
+      position:relative;
+      float: right;
+      margin-top: 30px;
+      border:solid;
+      border-color:gray;
+      border-radius: 1px; 
+      box-shadow: 0px 0px 0px 8px rgba(63, 66, 63, 0.822);
+      margin-left: 50px;
+
+    }
+
+    #location-map-iframe{
+      filter: invert(90%);
+    }
+
+    #location-text{
+      position:relative;
+      float: left;
+      margin-left: 50px;
+      margin-top: 30px;
+      max-width: 50vw;
+      background-color:black;
+      border-left: 2px solid rgb(109, 2, 104);
+      border-radius: 7px;
+      outline: none;
+      color:white;
+      border-color: #8f05a1;
+      box-shadow: 0 0 30px rgba(190, 10, 175, 0.6),
+                  0 0 60px rgba(179, 4, 155, 0.4), 
+                  0 0 100px rgba(190, 8, 175, 0.2), 
+                  0 0 90px rgba(188, 3, 212, 0.1);
+
+    }
+
+    #background{
+      position: absolute;
+      left:0px;
+      top:0px;
+      right: 0px;
+      z-index: -100;
+      background-color: black;
+    }
+
+    #preamble{
+      font-family: 'Open Sans Condensed', sans-serif;
+      position:relative;
+      bottom: 250px;
+      margin-right: 70px;
+      margin-left: 70px;
+      font-size: 30px;
+    }
+    
+    #reservationBtn{
+      
+      font-family: megrim;
+      font-size: 30px;
+      position: relative;
+      border-color: greenyellow;
+      color: #1fdd06e8;
+      border-radius: 15px;
+      border: solid;
+      top: 170px;
+      padding: 50px;
+      background-color: black;
+      left:40vw;
+      margin-right: 500px;
+      animation: neonspark2 15s 0.1s infinite;
+      transition: padding 2s;
+    
+      
+    }
+
+    #reservationBtn:hover{
+      text-decoration: none;
+      border: solid;
+      animation: 0;
+      border-color: rgb(131, 209, 15);
+      padding: 60px;
+    }
+
+    #vacancy{
+      position: relative;
+      float:top;
+    }
+
+    #weather{
+      margin-top: 5%;
+      border: solid;
+      border-color: gray;
+      border-radius: 10px;
+      width: 200px;
+    }
+    
+    #neon-vacany span {
+	    animation: neonspark 7s 5s 1;
+	  }
+
+    @keyframes neonspark  {
+        0% {
+            text-shadow: none;
+        }
+        30% {
+            text-shadow: 0 0 30px rgba(255,0,84,0.6);
+        }
+        60% {
+            text-shadow: 0 0 30px rgba(255,0,84,0.6),
+            0 0 60px rgba(255,0,84,0.4);
+        }
+        80% {
+            text-shadow: none;
+        }
+        100% {
+          text-shadow: 0 0 30px rgba(214, 1, 54, 0.6),
+            0 0 60px rgba(211, 7, 7, 0.4), 
+            0 0 100px rgba(228, 8, 19, 0.541), 
+            0 0 90px rgba(226, 13, 13, 0.658);
+         
+        }
+    }
+
+    @keyframes neonspark2  {
+        0% {
+            box-shadow: none;
+        }
+        10% {
+            box-shadow: 0 0 100px rgba(59, 248, 75, 0.6);
+        }
+        30% {
+            box-shadow: 0 0 30px rgba(61, 255, 22, 0.6),
+            0 0 60px rgba(255,0,84,0.4);
+        }
+        50%{box-shadow: 0 0 30px rgba(60, 255, 21, 0.6),
+            0 0 60px rgba(56, 255, 17, 0.4), 
+            0 0 100px rgba(7, 209, 0, 0.2), 
+            0 0 90px rgba(14, 253, 34, 0.1)
+          }
+        80% {
+            box-shadow: 0 0 30px rgba(61, 255, 22, 0.6),
+            0 0 60px rgba(255,0,84,0.4);
+        }
+        100% {
+          box-shadow: none;
+        }
+    }
+
+    
+  body {
+      background: black;
+      height: 1px;
+  }
+
+    </style>
+
+ </head>
+ 
+
+
+ <body data-spy="scroll" data-target=".navbar" data-offset="10">
+
+    <nav id="navigation" class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand row" style="margin-left: 10px;" href="main.html">
+          <p class="brand-letter" id="n">N</p><p class="brand-letter" id="o">O</p><p class="brand-letter" id="i">I</p><p class="brand-letter" id="r">R</p>
+        </a>
+  
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" 
+        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+  
+  
+          <li class="nav-item">
+            <a class="nav-link" href="#anchor-vacancy">Etusivu</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link" href="#anchor-introduction">Esittely</a>
+          </li>
+         
+          <li class="nav-item">
+            <a class="nav-link" href="#anchor-location">Sijainti</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link" href="#anchor-chatbox">Palaute</a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link" href="varaus.html">Varaa huone</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <div id="background">
+      <div class="anchor" id="anchor-vacancy"></div>
+      <div class="anchor" id="anchor-introduction"></div>
+      <div class="anchor" id="anchor-location"></div>
+      <div class="anchor" id="anchor-chatbox"></div>
+      <canvas class="rainCanvas" width="1024" height="768">Canvas Not Supported! Please Update Your Browser to the Latest Version.</canvas>   
+      <img id="raindrop1" src="img/raindrop1.png" width="0" height="0" alt="raindrop">
+      <img id="raindrop2" src="img/raindrop2.png" width="0" height="0" alt="raindrop">
+      <img id="raindrop3" src="img/raindrop3.png" width="0" height="0" alt="raindrop">
+
+      <div id="vacancy">
+          <h1 class="neon-vacancy" style="margin-top:100px;">V<span>A</span><span>C</span><span>A</span><span>N</span><span>C</span>Y</h1>
+      </div>
+
+      <div class="row2">
+        <div class="left">
+          <div class="left-background"></div>
+          <p id="preamble">
+            On synkkä ja myrskyinen yö. 
+            <br/>
+            <br/>
+            Takanasi on koko viikon kestänyt rikostutkinta, edessäsi puolestaan neonvaloja hohtava kostea katu. 
+            <br/>
+            Olet tullut kotiin. 
+          </p>
+        </div>
+      </div>
+      <a id="reservationBtn" href="varaus.html">Varaa huone</a>
+      
+      <div id="introduction" style="font-family: 'Open Sans Condensed', sans-serif; font-size: 22px;">
+        <div class="jumbotron">
+          <h1>Elämyshotelli NOIR</h1>
+          <p class="lead">Oletpa sitten vielä yhtä murhamysteeriä selvittävä eläköitynyt etsivä taikka korruptoitunutta lain kouraa välttelevä todistaja, on NOIR-elämyshotellissa paikka juuri Sinulle.</p>
+      
+             <div class="container "> 
+              <div class="row">
+              <div class="col-sm-4">Jokainen äänieristetty huoneemme sisältää Corona LC Smith&trade; -kirjoituskoneen. Huoneissamme voitkin ihmiselle luontaisesti sekä kirjoittaa raportteja että ajatella ääneen. (kaappien sisältö kannattaa silti tarkistaa huoneeseen saavuttaessa)<img src="img/room2.jpg" class="jumbotron_pic" alt="a picture of a posh restaurant"></div>
+              <div class="col-sm-4">Hotellin savuvapaassa baarissa voit muistuttaa maksaa ja keuhkojasi kolleegasi ennenaikaisesta eläkoitymisestä. Punaisiin aina pukeutuva vakioasiakkaamme vierailee keskiviikkoiltaisin.<img src="img/bar.jpg" class="jumbotron_pic" alt="another picture of a posh restaurant"></div>
+              <div class="col-sm-4">NOIR:in edustan kadun pinta heijastaa katsojansa moraalia. Toisilla pinta on puhdas ja vastasatanut, toisilla taas samea ja ryvettynyt. Molemmat ovat silti samassa syntisessä kaupunginosassa, kuten on myöskin hotelli NOIR. <img src="img/street.jpg" class="jumbotron_pic" alt="another picture of a posh restaurant"></div>
+              </div> 
+              </div>
+        </div>
+      </div>
+
+
+      
+      <div id="location">
+        <div class="row">
+          <div id="location-text">
+            <div style="display: flex; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; justify-content: center;">
+              <div id="weather">
+                <div class="clock" style="display: flex; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; justify-content: center;"></div>
+                  <div id=weatherContent style="margin-left:15px;">
+                    <p style="text-decoration: underline;">Säätila:</p>
+                    <p id="weatherCondition"></p>
+                    <p style="text-decoration: underline;">Lämpötila:</p>
+                    <p id="temperature"></p>
+                  </div>
+              </div>
+            </div>
+            <p style="font-family: 'Open Sans Condensed', sans-serif; font-size: 20px; margin-left: 20px; margin-right: 20px; margin-top: 20px;">Elämyshotelli NOIR sijaitsee aivan Kontulan ytimessä. <br/><br/> Huoneiden sälekaihtimien läpi voit tarkkailla metroaseman improvisoituja live-esityksiä. Ostoskeskuksen monista kaupoista tai niiden ulkopuolelta on mahdollista ostaa ainutlaatuisia matkamuistoja.</p>
+            
+          </div>
+
+          <div id="location-map">
+            <iframe id="location-map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1980.631936600323!2d25.08022291587584!3d60.23646494500023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469208bbdb2ddac7%3A0x93f515a172978467!2sKontulankaari%201%2C%2000940%20Helsinki!5e0!3m2!1sfi!2sfi!4v1625391859900!5m2!1sfi!2sfi" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> 
+          </div>
+
+        </div>
+      </div>
+
+
+     
+      <div id="chatbox">
+        <div class="row" id="chatrow">
+          <div id="chatbox-left">
+              <form>
+                <label for="name">Nimi:</label><br>
+                <input type="text" id="name" name="name"><br>
+                <label for="message">Viesti:</label><br>
+                <textarea  id="message" name="message" maxlength="200"></textarea>
+              </form> 
+              <button id="msgBtn" onclick="sendMessage()">Lähetä</button>
+          </div>
+
+          <div id="chatbox-right">
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <p id="para"></p>
+      
+    
+
+    </div>
+
+
+
+
+
+</body>
+ 
+</html> 
